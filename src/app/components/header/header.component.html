@@ -1,0 +1,29 @@
+<mat-toolbar color="accent">
+  <span [routerLink]="['/home']" routerLinkActive="active" >
+    <span class="logo">newzz</span>
+  </span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+
+  <!-- <span>Right Aligned Text</span> -->
+
+  <!-- <button mat-raised-button (click)="displayLoginDialog()">Login</button> -->
+  <button *ngIf="!getLoggStatus()" mat-button [matMenuTriggerFor]="menu">Login</button>
+  <button *ngIf="getLoggStatus() && isProfilePage()" (click)="goToProfile()" mat-button>Profile</button>
+  <button *ngIf="getLoggStatus()" mat-button (click)="logout()">Logout</button>
+  <mat-menu  #menu="matMenu">
+    <ul style="list-style-type:none;">
+      <li>
+        <button mat-flat-button (click)="userLogin()">User</button>
+      </li>
+      <li>
+        <button mat-flat-button (click)="editorLogin()">Editor</button>
+      </li>
+      <li>
+        <button mat-flat-button (click)="adminLogin()">Admin</button>
+      </li>
+    </ul>
+  </mat-menu>
+</mat-toolbar>

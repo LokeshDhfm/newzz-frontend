@@ -1,0 +1,30 @@
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  flex-flow: column;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.logo {
+  -webkit-user-select: none;
+  font-family: fantasy;
+  font-size: larger;
+  cursor: pointer;
+  outline: none;
+}
+
+span {
+  outline: none;
+}
+
+button {
+  outline: none;
+}

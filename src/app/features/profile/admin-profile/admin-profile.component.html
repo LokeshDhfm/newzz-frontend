@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-8">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Editors to be Approved
+          </mat-panel-title>
+          <mat-panel-description>
+            these editors need your approval for their successful signup
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div style="display: flex; flex-flow: wrap;">
+          <mat-card *ngFor="let editor of editors" style="width: 14vw; margin: 4px 4px 4px;">
+            <mat-card-header style="display: block;">Name: {{editor.name}}</mat-card-header>
+            <mat-card-subtitle style="display: block;">Phone: {{editor.phone}}</mat-card-subtitle>
+            <mat-card-actions><button mat-stroked-button color="warn"(click)="approve(editor.id)">Approve</button></mat-card-actions>
+          </mat-card>
+        </div>
+
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+            <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div style="display: flex; flex-flow: wrap;">
+          <mat-card *ngFor="let editor of editorsApproved" style="width: 14vw; margin: 4px 4px 4px;">
+            <mat-card-header style="display: block;">Name: {{editor.name}}</mat-card-header>
+            <mat-card-subtitle style="display: block;">Phone: {{editor.phone}}</mat-card-subtitle>
+          </mat-card>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+</div>

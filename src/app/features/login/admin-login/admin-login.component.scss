@@ -1,0 +1,18 @@
+.loginform {
+  margin: auto;
+  width: 25%;
+  margin-top: 7%;
+  display: flex;
+  flex-flow: column;
+}
+
+.buttons>button {
+  margin-bottom: 5px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+button {
+  outline: none;
+}

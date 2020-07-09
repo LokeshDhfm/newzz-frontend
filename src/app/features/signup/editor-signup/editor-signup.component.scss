@@ -1,0 +1,32 @@
+.signupform {
+  margin: auto;
+  width: 25%;
+  margin-top: 2%;
+  display: flex;
+  flex-flow: column;
+}
+
+.buttons>button {
+  margin-bottom: 5px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+/* Font color */
+input.mat-input-element {
+  color: white;
+}
+button {
+  outline: none;
+}

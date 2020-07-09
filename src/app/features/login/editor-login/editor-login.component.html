@@ -1,0 +1,28 @@
+<mat-card class="loginform">
+  <form [formGroup]="loginForm">
+    <div>
+      <mat-form-field style="width: 100%;"  appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="Enter the editor email address">
+        <mat-error *ngIf="f.email.hasError('required')">
+          email is <strong>required</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100%;"  appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter password">
+        <mat-error *ngIf="f.password.hasError('required')">
+          password is <strong>required</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="warn" (click)="login(loginForm.value)" type="submit">Login</button>
+      <button mat-raised-button (click)="goSignup()">Signup</button>
+    </div>
+  </form>
+  <!-- <a [routerLink]="['/login/editor']" routerLinkActive="active">
+    Are you an Editor? Login here
+  </a> -->
+  <button mat-raised-button [routerLink]="['/login/user']" routerLinkActive="active" >Go to User Login</button>
+</mat-card>

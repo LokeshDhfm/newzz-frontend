@@ -1,0 +1,14 @@
+button {
+  outline: none;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2em;
+  margin-right: 30px !important;
+  margin-left: 30px !important;
+}
+.material-icons {
+  line-height: 0.7 !important;
+  justify-content: center;
+}

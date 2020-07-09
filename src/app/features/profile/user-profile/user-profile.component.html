@@ -1,0 +1,112 @@
+<div class="mt-4 container">
+  <div class="col-3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div style="display: flex;">
+            <div>
+              <mat-icon inline=true>person_outline</mat-icon>
+            </div>
+            <div>
+              &nbsp;&nbsp;{{user.name}}
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div style="display: flex;">
+            <div>
+              <mat-icon>cake</mat-icon>
+            </div>
+            <div>
+              &nbsp;&nbsp;{{user.dateOfBirth}}
+            </div>
+          </div>
+
+        </mat-card-subtitle>
+      </mat-card-header>
+      <!-- <mat-card-actions>
+        <button mat-button>Edit</button>
+      </mat-card-actions> -->
+    </mat-card>
+  </div>
+  <div class="col-6">
+    <mat-card *ngFor="let item of posts" class="mb-4">
+      <mat-card-title><span>{{item.title}}</span></mat-card-title>
+      <mat-card-subtitle><span>{{item.shortDescription}}</span></mat-card-subtitle>
+      <mat-card-content><span>{{item.story}}</span></mat-card-content>
+      <mat-card-footer class="card-footer">
+        <div>
+          Posted by: <span>{{item.editor.name}}</span>
+        </div>
+        <div class="example-fill-remaining-space"></div>
+        <div>
+          Posted on: <span>{{item.date}}</span>
+        </div>
+      </mat-card-footer>
+      <div class="mb-1" style="text-align: right; font-size: smaller;">
+        <span *ngFor="let tag of item.tags; let isLast=last">{{tag.name}}&nbsp;{{isLast ? '' : ', '}}</span>
+      </div>
+      <mat-accordion *ngIf="item.comments.length!=0">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Previous Comments</mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let comment of item.comments" class="mb-2">
+            <div>
+              <span style="align-items: flex-end;">
+              <u><strong>{{comment.user === null ? comment.editor.name : comment.user.name}}</strong> says...</u>
+              </span>
+              <br>
+              <span >
+                {{comment.comment}}
+              </span>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-card-actions style="display: flex;">
+        <div style="width: 90%;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <input matInput type="text" [formControl]="comment" placeholder="add a comment">
+
+          </mat-form-field>
+        </div>
+        <div style="width: 10%; padding-left: 1.5vw; padding-top: 0.3vw;">
+          <button mat-icon-button type="submit" (click)="addComment(item, comment.value)"><mat-icon>send</mat-icon></button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-3">
+    <mat-card>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Add tags</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+            (removed)="removeTag(tag)">
+            {{tag}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="tag" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <div>
+        <button mat-stroked-button (click)="addTags()">Add Tags</button>
+      </div>
+    </mat-card>
+    <br>
+    <div>
+      <mat-card>
+        <mat-card-title>
+          Following Tags
+        </mat-card-title>
+            <mat-chip *ngFor="let tag of user.followingTags" [selectable]="false" [removable]="false">
+              {{tag.name}}
+              <!-- <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon> -->
+            </mat-chip>
+      </mat-card>
+    </div>
+  </div>
+</div>

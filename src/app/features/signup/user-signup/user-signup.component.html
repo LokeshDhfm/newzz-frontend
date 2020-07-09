@@ -1,0 +1,53 @@
+<mat-card class="signupform">
+  <h2>User signup</h2>
+  <form [formGroup]="signupForm">
+    <div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" placeholder="Enter the user's name">
+        <mat-error *ngIf="f.name.hasError('required')">
+          email is <strong>required</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="number" formControlName="phone" placeholder="Enter the editor phone">
+        <mat-error *ngIf="f.phone.hasError('required')">
+          phone is <strong>required</strong></mat-error>
+        <mat-error *ngIf="f.phone.hasError('pattern')">
+          phone must be <strong>10 digits</strong> and should start with <strong>9/8/7/6</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Cake Day</mat-label>
+        <input matInput [max]="maxDate" [matDatepicker]="picker" disabled formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="Enter the user email address">
+        <mat-error *ngIf="f.email.hasError('required')">
+          email is <strong>required</strong></mat-error>
+        <mat-error *ngIf="f.email.hasError('email')">email must be <strong>valid</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Enter password">
+        <mat-error *ngIf="f.password.hasError('required')">
+          password is <strong>required</strong></mat-error>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button color="warn" (click)="signup(signupForm.value)" type="submit">Signup</button>
+      <button mat-raised-button (click)="goLogin()">Login</button>
+    </div>
+  </form>
+  <button mat-raised-button [routerLink]="['/signup/editor']" routerLinkActive="active" >Go to Editor Signup</button>
+</mat-card>
